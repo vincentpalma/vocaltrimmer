@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block head_index %}
+	{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<h1 style="margin:auto;color:white;font-size:35px;text-align: center;">Your file has been uploaded !</h1>
+	<div class="ui container codepen-margin">
+		<div class="ui three columns centered grid">
+			<div class="row labels" style="margin:auto;color:white;font-size:35px;">
+				<div class="ui huge four wide colum label" style="margin-right:20px">Original</div>
+				<div class="ui huge four wide colum label">Instrumental</div>
+				<div class="ui huge four wide colum label" style="margin-left:20px">Vocal</div>
+			</div>
+			<div class="row audio">
+				<div class="ui four wide column original">
+					<audio controls preload="none"><source src="{{ url_for('static', filename=original) }}"></audio>
+				</div>
+				<div class="ui four wide column instrumental">
+					<audio controls preload="auto"><source src="{{ url_for('static', filename=instrumental) }}"></audio>
+				</div>
+				<div class="ui four wide column vocal">
+					<audio controls preload="auto"><source src="{{ url_for('static', filename=vocal) }}"></audio>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Pricing Table -->
+	<div id="pricing" class='ui container codepen-margin'>
+	   <div class="ui three columns centered grid">
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>2.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$2.97</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">1</span> Song package </p>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p class="desc">Basic offer</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" tabindex="0">
+	            <div class="visible content">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>9.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$1.99</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">5</span> Songs package </p>
+	            </div>
+	           <div class="ui center aligned segment">
+	               <p class="desc">Most popular</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" tabindex="0">
+	            <div class="visible content">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>14.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$1.49</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">10</span> Songs package </p>
+	            </div>
+	           <div class="ui center aligned segment">
+	               <p class="desc">Best value</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" tabindex="0">
+	            <div class="visible content">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	   </div>
+	</div>
+{% endblock %}

@@ -1,0 +1,122 @@
+/* Layout */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,700,900italic,900);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900);
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+   overflow-x: hidden;
+   font-family:"Lato",sans-serif;
+}
+
+#pay-success {
+  display : none;
+}
+
+#logo a{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+}
+
+#container {
+   height: 100%;
+   min-height: 100%;
+   position: relative;
+}
+
+#body {
+   margin: 20px;
+   min-height: 100%;
+}
+
+#footer {
+   bottom: 0;
+   width: 100%;
+   height: 50px;   /* Height of the footer */
+   text-align: center;
+}
+
+/* Forms */
+
+.form-user {
+   width: 33% !important;
+   margin: 0 auto !important;
+   margin-top: 10% !important;
+}
+
+.form-error {
+   color: #E50000 !important;
+}
+
+/* Flask flashes */
+
+.flash {
+   margin-right: 20px !important;
+}
+
+/* Errors */
+
+.error-box {
+   margin-top: 8%;
+}
+
+/* Presentation */
+#presentation {
+   margin:auto;
+   color :white;
+   background-color: #0B132B;
+   font-family:"Lato",sans-serif;
+   font-size: 17px
+}
+
+/*Trial*/
+#trial .grid.container {
+  margin-top: 5em;
+}
+#trial .inputfile{
+   width: 0.1px;
+   height: 0.1px;
+   opacity: 0;
+   overflow: hidden;
+   position: absolute;
+   z-index: -1;
+}
+
+/* Pricing chart */
+
+.codepen-margin{
+  margin: auto;
+  margin-top:65px;
+}
+#pricing .ui.segment{
+    font-family: "Raleway",sans-serif;
+    font-size: 28px;
+    font-weight: 350;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    background-color: #ebf2fa;
+}
+
+#pricing .ui.segment .desc{
+   font-weight: 300;
+}
+
+#pricing .ui.statistics {
+   font-family:Lato !important;
+   text-transform: uppercase !important;
+}
+
+#pricing .currency {
+   font-size:30px !important;
+   vertical-align: top !important;
+}
+
+#pricing .num {
+   font-family:"Lato" !important;
+   font-weight: 400;
+}

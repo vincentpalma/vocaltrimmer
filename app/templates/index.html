@@ -1,0 +1,267 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block head_index %}
+	{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<!-- Presentation -->
+	<div class="ui container presentation">
+		<div id="presentation">
+			<h1 class="ui center aligned header" style="color:white;font-size: 35px">The best and cheapest AI-based method to remove vocals from any song!</h1>
+			<p style="text-align: center">Our model has trained on thousands of songs using a deep learning algorithmn to recognize the patterns of human voice.</p>
+		</div>
+	</div>
+	<!-- Try it out! -->
+	<div id="trial" class="ui container trial" style="margin-top: 15px">
+		<h1 class="ui center aligned header" style="color:white;font-size: 35px">Try it out</h1>
+		<div class="ui middle aligned center aligned grid container">
+		  	<div class="ui center aligned container" >
+<!-- 		  		<form action = "http://localhost:5000/uploaded" method = "POST" enctype = "multipart/form-data">
+			      	<input type="file" (change)="fileEvent($event)" class="inputfile" id="embedpollfileinput" />
+
+				  	<label for="embedpollfileinput" class="ui animated huge primary left floated button" tabindex="0">
+				    	<div class="visible content">
+					    	<i class="ui upload icon"></i> 
+					    	Upload File (mp3 or wav)
+					    </div>
+					    <div class="hidden content"><i class="ui upload icon"></i></div>
+				  	</label>
+				</form> -->
+			    <form action = "http://localhost:5000/uploaded" method = "POST" enctype = "multipart/form-data">
+			         <input type = "file" class="inputfile" name = "file" id="uploadbtn"/>
+				  	 <label for="uploadbtn" class="ui animated huge secondary center aligned button" tabindex="0">
+				    	<div class="visible content">
+					    	<i class="ui upload icon"></i> 
+					    	Upload File (mp3 or wav)
+					    </div>
+					    <div class="hidden content"><i class="ui upload icon"></i></div>
+				  	 </label>
+			         <input type = "submit" class="inputfile" id="submitbtn"/>
+			         <label for="submitbtn" class="ui animated huge primary center aligned button" tabindex="0">
+				    	<div class="visible content">
+					    	Submit
+					    </div>
+					    <div class="hidden content"><i class="right arrow icon"></i></div>
+				  	 </label>
+			    </form>
+			</div>
+		</div>
+		<p id="status" style="margin:auto;margin-top:15px;margin-bottom:15px;color:white;font-size: 30px"></p>
+		<script>document.getElementById("submitbtn").onclick = function(){
+					document.getElementById("status").innerHTML = "<div class='ui medium indeterminate active text loader' style='margin-top:10px;'>Loading... (this can take up to 15min)</div>";}
+		</script>
+	</div>
+	<!-- Pricing Table -->
+	<div id="pricing" class='ui container codepen-margin'>
+	   <div class="ui three columns centered grid">
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>2.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$2.97</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">1</span> Song package </p>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p class="desc">Basic offer</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" id="select-1" tabindex="0">
+	            <div class="visible content">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>9.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$1.99</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">5</span> Songs package </p>
+	            </div>
+	           <div class="ui center aligned segment">
+	               <p class="desc">Most popular</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" id="select-2" tabindex="0">
+	            <div class="visible content">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	      <div class="four wide column">
+	         <div class="ui raised segments">
+	            <div class="ui center aligned secondary segment" style="background-color: #6FFFE9">
+	               <div class="ui statistic">
+	                  <div class="value">
+	                     <span class="currency">$</span>14.97
+	                  </div>
+	                  <div class="label">
+	                     <b>$1.49</b> per song
+	                  </div>
+	               </div>
+	            </div>
+	            <div class="ui center aligned segment">
+	               <p><span class="num">10</span> Songs package </p>
+	            </div>
+	           <div class="ui center aligned segment">
+	               <p class="desc">Best value</p>
+	            </div>
+	         </div>
+	         <div class="ui teal animated fluid button" id="select-3" tabindex="0">
+	            <div class="visible content ">Select</div>
+				<div class="hidden content">
+					<i class="right arrow icon"></i>
+				</div>
+	         </div>
+	      </div>
+	   </div>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	{% if current_user.is_authenticated %}
+	  <script src="https://checkout.stripe.com/checkout.js"></script>
+	  <script>
+		var handler1 = StripeCheckout.configure({
+		  key: "{{ key }}",
+		  image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+		  locale: "auto",
+		  token: function(token) {
+		    fetch("/user/charge", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json", },
+		      body: JSON.stringify({
+		        token: token.id,
+		        amount: 297,
+		        description: "1 Song Package",
+		      }),
+		    })
+		    .then(function(response) {
+		      console.log(response);
+		      return response.json();
+		    })
+		    .then(function(jsonResponse) {
+		      console.log(JSON.stringify(jsonResponse));
+		      window.location.reload(true);
+		    });
+		  }
+		});
+
+	    document.getElementById("select-1").addEventListener("click", function(e) {
+	      // Open Checkout with further options:
+	      handler1.open({
+	        name: "Vocal Trimmer",
+	        description: "1 Song Package",
+	        amount: 297
+	      });
+	      e.preventDefault();
+	    });
+
+		var handler2 = StripeCheckout.configure({
+		  key: "{{ key }}",
+		  image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+		  locale: "auto",
+		  token: function(token) {
+		    fetch("/user/charge", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json", },
+		      body: JSON.stringify({
+		        token: token.id,
+		        amount: 997,
+		        description: "5 Songs Package",
+		      }),
+		    })
+		    .then(function(response) {
+		      console.log(response);
+		      return response.json();
+		    })
+		    .then(function(jsonResponse) {
+		      console.log(JSON.stringify(jsonResponse));
+		      window.location.reload(true);
+		    });
+		  }
+		});
+
+	    document.getElementById("select-2").addEventListener("click", function(e) {
+	      // Open Checkout with further options:
+	      handler2.open({
+	        name: "Vocal Trimmer",
+	        description: "5 Songs Package",
+	        amount: 997
+	      });
+	      e.preventDefault();
+	    });
+
+		var handler3 = StripeCheckout.configure({
+		  key: "{{ key }}",
+		  image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+		  locale: "auto",
+		  token: function(token) {
+		    fetch("/user/charge", {
+		      method: "POST",
+		      headers: { "Content-Type": "application/json", },
+		      body: JSON.stringify({
+		        token: token.id,
+		        amount: 1497,
+		        description: "10 Song Package",
+		      }),
+		    })
+		    .then(function(response) {
+		      console.log(response);
+		      return response.json();
+		    })
+		    .then(function(jsonResponse) {
+		      console.log(JSON.stringify(jsonResponse));
+		      window.location.reload(true);
+		    });
+		  }
+		});
+
+	    document.getElementById("select-3").addEventListener("click", function(e) {
+	      // Open Checkout with further options:
+	      handler3.open({
+	        name: "Vocal Trimmer",
+	        description: "10 Song Package",
+	        amount: 1497
+	      });
+	      e.preventDefault();
+	    });
+	    // Close Checkout on page navigation:
+	    window.addEventListener("popstate", function() {
+	      handler.close();
+	    });
+	  </script>
+	{% else %}
+		<script type="text/javascript">
+			document.getElementById("select-1").addEventListener("click", function(e) {window.location.href = '/user/signin';
+				e.preventDefault();});
+			document.getElementById("select-2").addEventListener("click", function(e) {window.location.href = '/user/signin';
+				e.preventDefault();});
+			document.getElementById("select-3").addEventListener("click", function(e) {window.location.href = '/user/signin';
+				e.preventDefault();});
+		</script>
+	{% endif %}
+{% endblock %}

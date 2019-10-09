@@ -1,0 +1,8 @@
+*~
+*.pyc
+*.png
+*.wav
+*.mp3
+*.npy
+*.npz
+.vscode/
