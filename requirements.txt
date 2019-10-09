@@ -15,7 +15,7 @@ termcolor==1.1.0
 WTForms==2.1
 stripe==2.23.0
 tqdm>=4.30
-librosa>=0.6.3
+https://github.com/librosa/librosa/archive/0.7.0.zip
 chainer>=6.0.0
 opencv_python>=4.0.0
 
