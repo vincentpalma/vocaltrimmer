@@ -29,7 +29,7 @@ def upload_file():
 			print(upload_folder) #Debugging
 			now = time.time()
 
-			for filename in os.listdir(upload_folder):
+			for filename in os.listdir('/opt/render/project/src/app/'): #Debugging
 			    if allowed_file(filename):
 				    if os.path.getmtime(os.path.join(upload_folder, filename)) < now - 30 * 60:
 				        if os.path.isfile(os.path.join(upload_folder, filename)):
