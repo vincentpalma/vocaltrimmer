@@ -25,11 +25,10 @@ def upload_file2():
 def upload_file():
 	 if request.method == 'POST':
 	 		#CLEANUP SCRIPT
-			upload_folder = '/opt/render/project/src/app/static' # Debugging, better use 'app.config['UPLOAD_FOLDER']' instead 
-			print(upload_folder) #Debugging
+			upload_folder = app.config['UPLOAD_FOLDER']
 			now = time.time()
 
-			for filename in os.listdir('/opt/render/project/src/app/'): #Debugging
+			for filename in os.listdir(upload_folder):
 			    if allowed_file(filename):
 				    if os.path.getmtime(os.path.join(upload_folder, filename)) < now - 30 * 60:
 				        if os.path.isfile(os.path.join(upload_folder, filename)):
