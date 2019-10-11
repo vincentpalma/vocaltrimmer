@@ -25,7 +25,8 @@ def upload_file2():
 def upload_file():
 	 if request.method == 'POST':
 	 		#CLEANUP SCRIPT
-			upload_folder = app.config['UPLOAD_FOLDER']
+			upload_folder = '/opt/render/project/src/app/static' # Debugging, better use 'app.config['UPLOAD_FOLDER']' instead 
+			print(upload_folder) #Debugging
 			now = time.time()
 
 			for filename in os.listdir(upload_folder):
@@ -36,6 +37,7 @@ def upload_file():
 				            os.remove(os.path.join(upload_folder, filename))
 
 			f = request.files['file']
+			print(f.filename) #Debugging
 			if f and allowed_file(f.filename):
 				path = upload_folder + '/' + f.filename
 				f.save(path)
