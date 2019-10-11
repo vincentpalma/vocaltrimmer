@@ -22,6 +22,10 @@ ADMINS = ['flask.boilerplate@gmail.com']
 # Number of times a password is hashed
 BCRYPT_LOG_ROUNDS = 12
 
-PATH = '/opt/render/project/src' # This is for a render deployment, change to your path if you are running on localhost
-UPLOAD_FOLDER = '/opt/render/project/src/app/static'
-MODELS_PATH = '/opt/render/project/src/models/baseline.npz'
+#PATH = '/opt/render/project/src' # This is for a render deployment, change to your path if you are running on localhost
+#UPLOAD_FOLDER = '/opt/render/project/src/app/static'
+#MODELS_PATH = '/opt/render/project/src/models/baseline.npz'
+# Deployment to AWS
+PATH = '/home/ubuntu/vocaltrimmer' # This is for a render deployment, change to your path if you are running on localhost
+UPLOAD_FOLDER = PATH + '/app/static'
+MODELS_PATH = PATH + '/models/baseline.npz'
