@@ -60,6 +60,9 @@ I did what most people recommend for the application's structure. Basically, eve
 ## Setup
 
 ### Vanilla
+- Edit the config_common.py file
+
+	`(set PATH variable to your path to the app)`
 
 - Install the requirements and setup the development environment.
 
