@@ -28,5 +28,5 @@ BCRYPT_LOG_ROUNDS = 12
 #MODELS_PATH = '/opt/render/project/src/models/baseline.npz'
 # Deployment to AWS
 PATH = os.path.abspath(os.path.join(os.getcwd(),os.pardir)) # This is for a render deployment, change to your path if you are running on localhost
-UPLOAD_FOLDER = os.getcwd() '/static'
+UPLOAD_FOLDER = os.getcwd() + '/static'
 MODELS_PATH = PATH + '/models/baseline.npz'
