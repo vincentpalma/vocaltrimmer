@@ -3,6 +3,7 @@ from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 from flask import render_template, jsonify
+import app
 from app import app
 import random
 
@@ -13,6 +14,8 @@ stripe_keys = {
 
 ALLOWED_EXTENSIONS = set(['wav', 'm4a', '3gp', 'oma', 'mp3', 'mp4'])
 models_path = app.config['MODELS_PATH'] 
+upload_folder = app.config['UPLOAD_FOLDER']
+
 def allowed_file(filename):
 		return '.' in filename and \
 					 filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -25,9 +28,7 @@ def upload_file2():
 def upload_file():
 	 if request.method == 'POST':
 	 		#CLEANUP SCRIPT
-			upload_folder = app.config['UPLOAD_FOLDER']
 			now = time.time()
-
 			for filename in os.listdir(upload_folder):
 			    if allowed_file(filename):
 				    if os.path.getmtime(os.path.join(upload_folder, filename)) < now - 30 * 60:
