@@ -1,3 +1,4 @@
+import os
 TIMEZONE = 'Europe/Paris'
 
 # Secret key for generating tokens
