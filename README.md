@@ -2,9 +2,7 @@
 
 ![License](http://img.shields.io/:license-mit-blue.svg)
 
-A fork of [Max Halford's](https://github.com/MaxHalford) [flask-boilerplate](https://github.com/MaxHalford/flask-boilerplate). I've noticed SaaS bootstraps/boilerplates being sold upwards of $1,000 per year and I think that's fucking ridiculous. This project will be my attempt to make a great starting point for your next big business as easy and efficent as possible.
-
-If you're here because of Siraj's [video](https://www.youtube.com/watch?v=NzmoPqte4V4), welcome!
+A fork of [Max Halford's](https://github.com/MaxHalford) [flask-boilerplate](https://github.com/MaxHalford/flask-boilerplate) and [Tsurumeso's](https://github.com/tsurumeso) [vocal-remover](https://github.com/tsurumeso/vocal-remover)
 
 ## Features
 
@@ -17,9 +15,8 @@ If you're here because of Siraj's [video](https://www.youtube.com/watch?v=NzmoPq
 - [x] Asynchronous AJAX calls.
 - [x] Administration panel.
 - [x] Logging.
-- [ ] Stripe subscriptions. (WIP)
-- [ ] RESTful API for payments.
-- [ ] Simple RESTful API to communicate with your app.
+- [x] Stripe payments. 
+- [ ] Working deployment (Only works in localhost:5000)
 
 ## Libraries
 
